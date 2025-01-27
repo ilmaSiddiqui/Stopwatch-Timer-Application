@@ -24,7 +24,7 @@ stopButton.addEventListener('click', stopTimer);
 pauseButton.addEventListener('click', pauseTimer);
 resetButton.addEventListener('click', resetTimer);
 
-/* Starts the timer by incrementing time every 10ms.*/
+/* Starts the timer by incrementing time every 1000ms.*/
 function startTimer() {
     interval = setInterval(updateTimer, 10);
     startButton.disabled = true; // Disable the start button while the timer is running
@@ -52,10 +52,10 @@ function resetTimer() {
 }
 
 /*Updates the timer values for milliseconds, seconds, and minutes.
- * Called every 10ms by the setInterval function.*/
+ * Called every 1000ms by the setInterval function.*/
 function updateTimer() {
-    milliseconds++; // Increment milliseconds
-    if (milliseconds === 10) { // Convert to seconds after 1000ms
+    milliseconds+= 10; // Increment milliseconds
+    if (milliseconds === 1000) { // Convert to seconds after 1000ms
         milliseconds = 0;
         seconds++;
         if (seconds === 60) { // Convert to minutes after 60 seconds
@@ -68,7 +68,7 @@ function updateTimer() {
 
 /* Updates the HTML content of the timer elements to reflect the current time.*/
 function displayTimer() {
-    millisecondsLabel.textContent = padTime(milliseconds);
+    millisecondsLabel.textContent = padTime(Math.floor(milliseconds / 10));
     secondsLabel.textContent = padTime(seconds);
     minutesLabel.textContent = padTime(minutes);
 }
