@@ -28,6 +28,7 @@ resetButton.addEventListener('click', resetTimer);
 function startTimer() {
     interval = setInterval(updateTimer, 10);
     startButton.disabled = true; // Disable the start button while the timer is running
+    pauseButton.disabled = false; 
 }
 
 /* Stops the timer, saves the current lap time, and resets the timer data.*/
